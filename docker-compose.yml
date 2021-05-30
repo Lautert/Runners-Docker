@@ -1,0 +1,51 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: deliver-it
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: corrida-tst
+    container_name: corrida-tst-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - corrida-tst
+
+  db:
+    image: mysql:5.7
+    container_name: corrida-tst-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: corrida_tst
+      MYSQL_ROOT_PASSWORD: root@123
+      MYSQL_PASSWORD: corrida@123
+      MYSQL_USER: corrida_user
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - corrida-tst
+    ports:
+      - 43306:3306
+
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: corrida-tst-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d
+    networks:
+      - corrida-tst
+
+networks:
+  corrida-tst:
+    driver: bridge
