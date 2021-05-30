@@ -13,3 +13,7 @@
 - Mysql
 - PHP 7.3
 - CakePHP 4 (Framework)
+
+# Test
+To use this application correctly you need Postman and import the collection in the `Postman` folder.
+The endpoints there use the correctly api.

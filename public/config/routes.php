@@ -53,12 +53,27 @@ $routes->scope('/', function (RouteBuilder $builder) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, templates/Pages/home.php)...
      */
-    // $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 
-    // /*
-    //  * ...and connect the rest of 'Pages' controller's URLs.
-    //  */
-    // $builder->connect('/pages/*', 'Pages::display');
+    /*
+     * ...and connect the rest of 'Pages' controller's URLs.
+     */
+    $builder->connect('/pages/*', 'Pages::display');
+
+    $builder->connect('/Runners/*', 'Pages::display');
+    $builder->connect('/runners/*', 'Pages::display');
+
+    $builder->connect('/RacingTypes/*', 'Pages::display');
+    $builder->connect('/racing-types/*', 'Pages::display');
+
+    $builder->connect('/RacingEvents/*', 'Pages::display');
+    $builder->connect('/racing-events/*', 'Pages::display');
+
+    $builder->connect('/RunnerRaces/*', 'Pages::display');
+    $builder->connect('/runner-races/*', 'Pages::display');
+
+    $builder->connect('/RunnerRaceResults/*', 'Pages::display');
+    $builder->connect('/runner-race-results/*', 'Pages::display');
 
     /*
      * Connect catchall routes for all controllers.
