@@ -5,7 +5,7 @@
 	[X] Framework: Opcional
 	[X] Informações devem ser persistidas em um banco relacional
 	[X] Deverá ser criado o dockerfile para a montagem do ambiente
-	[ ] Os arquivos devem ser disponibilizados em um repositório GIT.
+	[X] Os arquivos devem ser disponibilizados em um repositório GIT.
 
 # A utilização das seguintes tecnologias será considerada um diferencial:
 	• O código PHP estar seguindo os padrões de desenvolvimento PSR-1, PSR-2 e PSR-5.
